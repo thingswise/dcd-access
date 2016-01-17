@@ -1,7 +1,9 @@
-FROM thingswise/dcd-docker
+FROM ubuntu:trusty
 MAINTAINER Alexander Lukichev
 
-RUN opkg-install bash git nano bind-dig openssh-client-utils wget ca-certificates
+RUN apt-get update
+RUN apt-get install -y git nano wget dnsutils
+RUN apt-get clean all
 
 ENV FLEET_VERSION 0.11.5
 ENV ETCDCTL_VERSION 2.1.2
@@ -19,5 +21,8 @@ RUN \
   tar -xf /tmp/etcd-v${ETCDCTL_VERSION}-linux-amd64.tar -C /tmp && \
   mv /tmp/etcd-v${ETCDCTL_VERSION}-linux-amd64/etcdctl /bin/ && \
   rm -rf /tmp/etcd-v${ETCDCTL_VERSION}-linux-amd64*
+
+ADD http://gocfs.s3-website-us-east-1.amazonaws.com/dcd /dcd
+RUN chmod +x /dcd
 
 CMD ["/dcd"]
