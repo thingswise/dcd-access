@@ -23,6 +23,8 @@ RUN \
   rm -rf /tmp/etcd-v${ETCDCTL_VERSION}-linux-amd64*
 
 ADD http://gocfs.s3-website-us-east-1.amazonaws.com/dcd /dcd
-RUN chmod +x /dcd
+ADD https://github.com/Yelp/dumb-init/releases/download/v0.5.0/dumb-init_0.5.0_amd64 /dumb-init
+RUN chmod +x /dcd /dumb-init
 
+ENTRYPOINT ["/dumb-init"]
 CMD ["/dcd"]
