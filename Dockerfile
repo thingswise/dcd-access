@@ -5,7 +5,7 @@ RUN apt-get update
 RUN apt-get install -y git nano wget dnsutils
 RUN apt-get clean all
 
-ENV FLEET_VERSION 0.11.5
+ENV FLEET_VERSION 0.11.7
 ENV ETCDCTL_VERSION 2.1.2
 
 RUN \
