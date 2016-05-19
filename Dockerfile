@@ -2,7 +2,7 @@ FROM ubuntu:trusty
 MAINTAINER Alexander Lukichev
 
 RUN apt-get update
-RUN apt-get install -y git nano wget dnsutils
+RUN apt-get install -y git nano wget dnsutils sshpass
 RUN apt-get clean all
 
 ENV FLEET_VERSION 0.11.7
