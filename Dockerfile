@@ -24,8 +24,9 @@ RUN \
 
 ADD http://gocfs.s3-website-us-east-1.amazonaws.com/dcd /dcd
 ADD http://gocfs.s3-website-us-east-1.amazonaws.com/s3repo /s3repo
+ADD http://gocfs.s3-website-us-east-1.amazonaws.com/rci /rci
 ADD https://github.com/Yelp/dumb-init/releases/download/v0.5.0/dumb-init_0.5.0_amd64 /dumb-init
-RUN chmod +x /dcd /s3repo /dumb-init
+RUN chmod +x /dcd /s3repo /rci /dumb-init
 
 ENTRYPOINT ["/dumb-init"]
 CMD ["/dcd"]
